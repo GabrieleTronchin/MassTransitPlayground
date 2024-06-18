@@ -11,7 +11,7 @@ This project consists of two main services:
 1. **MassTransit.Playground.Sender.Api**: Exposes various methods to send messages to a bus using MassTransit.
 2. **MassTransit.Playground.Receiver.Api**: Does not expose any APIs; it simply consumes messages from a service bus.
 
-[!image](./assets/swagger.png)
+![image](./assets/swagger.png)
 
 The project demonstrates switching between Azure Service Bus and RabbitMQ using MassTransit. To switch the service bus provider, modify the `ServiceBusOptions` property in the `appsettings.json` file:
 
