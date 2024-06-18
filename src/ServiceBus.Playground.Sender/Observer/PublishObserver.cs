@@ -2,7 +2,7 @@
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace ServiceBus.Playground.Sender.Observer;
+namespace MassTransit.Playground.Sender.Observer;
 
 public class PublishObserver(ILogger<PublishObserver> logger) : IPublishObserver
 {

@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus.Playground.Sender.Api", "ServiceBus.Playground.Api\ServiceBus.Playground.Sender.Api.csproj", "{9A27F690-F929-4FAC-8EA5-653FE16D6B84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit.Playground.Sender.Api", "ServiceBus.Playground.Api\MassTransit.Playground.Sender.Api.csproj", "{9A27F690-F929-4FAC-8EA5-653FE16D6B84}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus.MassTransit.Receivers", "ServiceBus.MassTransit\ServiceBus.MassTransit.Receivers.csproj", "{338B7095-F723-432B-96C1-1E32845A89ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit.Playground.Receivers", "ServiceBus.MassTransit\MassTransit.Playground.Receivers.csproj", "{338B7095-F723-432B-96C1-1E32845A89ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus.MassTransit.Messages", "ServiceBus.MassTransit.Messages\ServiceBus.MassTransit.Messages.csproj", "{61532722-3061-4673-A150-B0745F8775FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit.Playground.Messages", "ServiceBus.MassTransit.Messages\MassTransit.Playground.Messages.csproj", "{61532722-3061-4673-A150-B0745F8775FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus.Playground.Sender", "ServiceBus.Playground.Sender\ServiceBus.Playground.Sender.csproj", "{23C06D31-B4B0-45F5-B821-EDE7F9584D2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit.Playground.Sender", "ServiceBus.Playground.Sender\MassTransit.Playground.Sender.csproj", "{23C06D31-B4B0-45F5-B821-EDE7F9584D2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus.Playground.Receiver.Api", "ServiceBus.Playground.Receiver\ServiceBus.Playground.Receiver.Api.csproj", "{C1BBB78C-D2C3-4718-BFA7-605E009FFC06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransit.Playground.Receiver.Api", "ServiceBus.Playground.Receiver\MassTransit.Playground.Receiver.Api.csproj", "{C1BBB78C-D2C3-4718-BFA7-605E009FFC06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

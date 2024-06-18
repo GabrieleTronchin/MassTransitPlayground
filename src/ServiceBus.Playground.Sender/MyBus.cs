@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 
-namespace ServiceBus.Playground.Sender
+namespace MassTransit.Playground.Sender
 {
     public class MyBus(IPublishEndpoint bus, IMessageScheduler messageScheduler) : IMyBus
     {

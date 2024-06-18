@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Endpoint\i3mnnncu.ozg~" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ServiceBus.MassTransit\ServiceBus.MassTransit.Receivers.csproj" />
+    <ProjectReference Include="..\ServiceBus.Playground.Sender\MassTransit.Playground.Sender.csproj" />
   </ItemGroup>
 
 </Project>

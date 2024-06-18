@@ -1,11 +1,11 @@
 ﻿using MassTransit;
+using MassTransit.Playground.Messages;
+using MassTransit.Playground.Receivers.Observers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using ServiceBus.MassTransit.Messages;
-using ServiceBus.MassTransit.Receivers.Observers;
 
-namespace ServiceBus.MassTransit.Receivers;
+namespace MassTransit.Playground.Receivers;
 
 public static partial class ServicesExtensions
 {

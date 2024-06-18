@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace ServiceBus.Playground.Sender.Api.Endpoint;
+namespace MassTransit.Playground.Sender.Api.Endpoint;
 
 public static class EndpointServiceExtension
 {

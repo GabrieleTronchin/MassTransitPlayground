@@ -1,8 +1,8 @@
 ﻿using MassTransit;
+using MassTransit.Playground.Messages;
 using Microsoft.Extensions.Logging;
-using ServiceBus.MassTransit.Messages;
 
-namespace ServiceBus.MassTransit.Receivers;
+namespace MassTransit.Playground.Receivers;
 
 class BatchMessageConsumer(ILogger<MyTestErrorConsumer> logger)
     : IConsumer<Batch<MyTestBatchMessage>>

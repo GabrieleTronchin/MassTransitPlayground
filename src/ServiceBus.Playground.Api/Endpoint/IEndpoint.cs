@@ -1,4 +1,4 @@
-﻿namespace ServiceBus.Playground.Sender.Api.Endpoint;
+﻿namespace MassTransit.Playground.Sender.Api.Endpoint;
 
 public interface IEndpoint
 {

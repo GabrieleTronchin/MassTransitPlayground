@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace ServiceBus.MassTransit.Receivers.Observers
+namespace MassTransit.Playground.Receivers.Observers
 {
     public class ConsumeObserver<T>(ILogger<ConsumeObserver<T>> logger) : IConsumeMessageObserver<T>
         where T : class

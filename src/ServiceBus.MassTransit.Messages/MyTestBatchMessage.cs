@@ -1,4 +1,4 @@
-﻿namespace ServiceBus.MassTransit.Messages
+﻿namespace MassTransit.Playground.Messages
 {
     public class MyTestBatchMessage
     {

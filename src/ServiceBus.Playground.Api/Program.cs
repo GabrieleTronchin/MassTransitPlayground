@@ -1,5 +1,5 @@
-using ServiceBus.Playground.Sender;
-using ServiceBus.Playground.Sender.Api.Endpoint;
+using MassTransit.Playground.Sender;
+using MassTransit.Playground.Sender.Api.Endpoint;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceBus.MassTransit.Messages;
 
-namespace ServiceBus.Playground.Sender.Api.Endpoint;
+namespace MassTransit.Playground.Sender.Api.Endpoint;
 
 public class MassTransitEndpoints : IEndpoint
 {

@@ -2,7 +2,7 @@
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace ServiceBus.MassTransit.Receivers.Observers;
+namespace MassTransit.Playground.Receivers.Observers;
 
 public class GlobalConsumeObserver(ILogger<GlobalConsumeObserver> logger) : IConsumeObserver
 {

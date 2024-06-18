@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ServiceBus.MassTransit.Messages
+namespace MassTransit.Playground.Messages
 {
     public class ServiceBusOptions
     {

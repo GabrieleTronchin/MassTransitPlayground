@@ -1,5 +1,4 @@
-﻿
-namespace ServiceBus.Playground.Sender
+﻿namespace MassTransit.Playground.Sender
 {
     public interface IMyBus
     {

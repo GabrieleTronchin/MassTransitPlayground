@@ -1,4 +1,4 @@
-using ServiceBus.MassTransit.Receivers;
+using MassTransit.Playground.Receivers;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
