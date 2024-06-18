@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ServiceBus.MassTransit.Messages;
+﻿using MassTransit.Playground.Messages;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MassTransit.Playground.Sender.Api.Endpoint;
 
