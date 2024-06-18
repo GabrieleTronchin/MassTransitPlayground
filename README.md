@@ -36,5 +36,3 @@ This project covers several key topics related to MassTransit:
 - Receiving messages in batches
 - Using observers to intercept published and subscribed events
 - Implementing simple retry strategies for message errors
-
-This repository is a comprehensive resource for learning and experimenting with MassTransit features in a practical, hands-on manner.
