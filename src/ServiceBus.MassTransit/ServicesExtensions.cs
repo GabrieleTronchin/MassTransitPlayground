@@ -62,12 +62,12 @@ public static partial class ServicesExtensions
                             cfg.Host(buOptions.ConnectionString);
                             cfg.UseScheduledRedelivery(r =>
                                 r.Intervals(
-                                    TimeSpan.FromMinutes(5),
-                                    TimeSpan.FromMinutes(15),
-                                    TimeSpan.FromMinutes(30)
+                                    TimeSpan.FromSeconds(1),
+                                    TimeSpan.FromSeconds(2),
+                                    TimeSpan.FromSeconds(3)
                                 )
                             );
-                            cfg.UseMessageRetry(r => r.Immediate(5));
+                            cfg.UseMessageRetry(r => r.Immediate(2));
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectConsumeObserver(globalConsumerObserver);
                         }
@@ -83,12 +83,12 @@ public static partial class ServicesExtensions
                             cfg.Host(buOptions.ConnectionString);
                             cfg.UseScheduledRedelivery(r =>
                                 r.Intervals(
-                                    TimeSpan.FromMinutes(5),
-                                    TimeSpan.FromMinutes(15),
-                                    TimeSpan.FromMinutes(30)
+                                    TimeSpan.FromSeconds(1),
+                                    TimeSpan.FromSeconds(2),
+                                    TimeSpan.FromSeconds(3)
                                 )
                             );
-                            cfg.UseMessageRetry(r => r.Immediate(5));
+                            cfg.UseMessageRetry(r => r.Immediate(2));
                             cfg.ConfigureEndpoints(context);
                         }
                     );

@@ -1,11 +1,11 @@
 ﻿namespace MassTransit.Playground.Messages
 {
-    public class MyTestMessage
+    public class MyTestErrorMessage
     {
         public Guid Id { get; }
         public DateTime Time { get; }
 
-        public MyTestMessage()
+        public MyTestErrorMessage()
         {
             Id = Guid.NewGuid();
             Time = DateTime.Now;

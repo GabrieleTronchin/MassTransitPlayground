@@ -40,10 +40,10 @@ public class MassTransitEndpoints : IEndpoint
             .WithOpenApi();
 
         app.MapPost(
-                "/Publish/MyTestMessage",
+                "/PublishWithError/MyTestMessage",
                 ([FromServices] IMyBus bus) =>
                 {
-                    return bus.Publish(new MyTestMessage());
+                    return bus.Publish(new MyTestErrorMessage());
                 }
             )
             .WithName("MyTestMessage")
@@ -67,7 +67,7 @@ public class MassTransitEndpoints : IEndpoint
                 {
                     var lstMessages = new Array[100].Select(x => new MyTestBatchMessage());
 
-                    return bus.Publish(new MyTestMessage(), TimeSpan.FromSeconds(5));
+                    return bus.Publish(new MyTestErrorMessage(), TimeSpan.FromSeconds(5));
                 }
             )
             .WithName("DelayMessage")
