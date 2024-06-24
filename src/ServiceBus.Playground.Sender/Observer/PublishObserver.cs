@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using MassTransit;
 using Microsoft.Extensions.Logging;
 
 namespace MassTransit.Playground.Sender.Observer;

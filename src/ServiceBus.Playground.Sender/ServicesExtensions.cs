@@ -1,5 +1,4 @@
-﻿using MassTransit;
-using MassTransit.Playground.Messages;
+﻿using MassTransit.Playground.Messages;
 using MassTransit.Playground.Sender.Observer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

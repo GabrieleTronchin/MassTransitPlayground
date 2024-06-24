@@ -8,7 +8,29 @@ public class MassTransitEndpoints : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost(
-                "/MassTransit/NotificationMessage",
+                "/SendOnQueue/SendMessage",
+                ([FromServices] IMyBus bus) =>
+                {
+                    return bus.Send("queue:my-test-message", new MyTestSendMessage());
+                }
+            )
+            .WithName("SendMessage")
+            .WithOpenApi();
+
+        app.MapPost(
+                "/SendBatch/SendBatchMessage",
+                ([FromServices] IMyBus bus) =>
+                {
+                    var lstMessages = new Array[100].Select(x => new MyTestSendMessage());
+
+                    return bus.SendBatch("queue:my-test-message", lstMessages);
+                }
+            )
+            .WithName("SendBatchMessage")
+            .WithOpenApi();
+
+        app.MapPost(
+                "/Publish/NotificationMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     return bus.Publish(new NotificationMessage("My Test Message", "Test Title"));
@@ -18,7 +40,7 @@ public class MassTransitEndpoints : IEndpoint
             .WithOpenApi();
 
         app.MapPost(
-                "/MassTransit/MyTestMessage",
+                "/Publish/MyTestMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     return bus.Publish(new MyTestMessage());
@@ -27,34 +49,28 @@ public class MassTransitEndpoints : IEndpoint
             .WithName("MyTestMessage")
             .WithOpenApi();
 
+        app.MapPost(
+                "/PublishBatch/MyTestBatchMessage",
+                ([FromServices] IMyBus bus) =>
+                {
+                    var lstMessages = new Array[100].Select(x => new MyTestBatchMessage());
 
+                    return bus.PublishBatch(lstMessages);
+                }
+            )
+            .WithName("MyTestBatchMessage")
+            .WithOpenApi();
 
         app.MapPost(
-               "/MassTransit/MyTestBatchMessage",
-               ([FromServices] IMyBus bus) =>
-               {
-                   var lstMessages = new Array[100].Select(x => new MyTestBatchMessage());
+                "/PublishDelay/DelayMessage",
+                ([FromServices] IMyBus bus) =>
+                {
+                    var lstMessages = new Array[100].Select(x => new MyTestBatchMessage());
 
-                   return bus.PublishBatch(lstMessages);
-               }
-           )
-           .WithName("MyTestBatchMessage")
-           .WithOpenApi();
-
-
-
-
-        app.MapPost(
-               "/MassTransit/DelayMessage",
-               ([FromServices] IMyBus bus) =>
-               {
-                   var lstMessages = new Array[100].Select(x => new MyTestBatchMessage());
-
-                   return bus.Publish(new MyTestMessage(), TimeSpan.FromSeconds(5));
-               }
-           )
-           .WithName("DelayMessage")
-           .WithOpenApi();
-
+                    return bus.Publish(new MyTestMessage(), TimeSpan.FromSeconds(5));
+                }
+            )
+            .WithName("DelayMessage")
+            .WithOpenApi();
     }
 }

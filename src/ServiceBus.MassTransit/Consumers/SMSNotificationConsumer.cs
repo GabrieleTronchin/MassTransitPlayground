@@ -1,8 +1,7 @@
-using MassTransit;
 using MassTransit.Playground.Messages;
 using Microsoft.Extensions.Logging;
 
-namespace MassTransit.Playground.Receivers;
+namespace MassTransit.Playground.Receivers.Consumers;
 
 public class SMSNotificationConsumer : IConsumer<NotificationMessage>
 {
