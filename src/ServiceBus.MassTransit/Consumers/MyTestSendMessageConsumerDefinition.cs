@@ -21,5 +21,6 @@ public class MyTestSendMessageConsumerDefinition : ConsumerDefinition<MyTestSend
     )
     {
         endpointConfigurator.UseMessageRetry(r => r.Interval(5, 1000));
+        endpointConfigurator.PublishFaults = false; // avoid publish fault
     }
 }
