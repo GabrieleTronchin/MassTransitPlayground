@@ -11,7 +11,7 @@ This project consists of two main services:
 1. **MassTransit.Playground.Sender.Api**: Exposes various methods to send messages to a bus using MassTransit.
 2. **MassTransit.Playground.Receiver.Api**: Does not expose any APIs; it simply consumes messages from a service bus.
 
-[!image](./assets/swagger.png)
+![image](./assets/swagger.png)
 
 The project demonstrates switching between Azure Service Bus and RabbitMQ using MassTransit. To switch the service bus provider, modify the `ServiceBusOptions` property in the `appsettings.json` file:
 
@@ -36,5 +36,3 @@ This project covers several key topics related to MassTransit:
 - Receiving messages in batches
 - Using observers to intercept published and subscribed events
 - Implementing simple retry strategies for message errors
-
-This repository is a comprehensive resource for learning and experimenting with MassTransit features in a practical, hands-on manner.
