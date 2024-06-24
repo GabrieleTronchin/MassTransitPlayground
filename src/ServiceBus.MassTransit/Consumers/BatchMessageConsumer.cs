@@ -12,7 +12,7 @@ class BatchMessageConsumer(ILogger<MyTestErrorConsumer> logger)
         {
             var message = context.Message[i].Message;
             logger.LogInformation(
-                "new message received: {Id} {time}",
+                "New message received: {Id} {time}",
                 message.Id,
                 message.Time.ToString()
             );
