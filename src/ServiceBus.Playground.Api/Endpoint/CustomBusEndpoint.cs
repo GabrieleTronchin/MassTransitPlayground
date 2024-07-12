@@ -8,7 +8,7 @@ public class MassTransitEndpoints : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost(
-                "/SendOnQueue/SendMessage",
+                "/CustomBus/SendOnQueue/SendMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     return bus.Send("queue:my-test-message", new MyTestSendMessage());
@@ -18,7 +18,7 @@ public class MassTransitEndpoints : IEndpoint
             .WithOpenApi();
 
         app.MapPost(
-                "/SendBatch/SendBatchMessage",
+                "/CustomBus/SendBatch/SendBatchMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     var lstMessages = new Array[100].Select(x => new MyTestSendMessage());
@@ -30,7 +30,7 @@ public class MassTransitEndpoints : IEndpoint
             .WithOpenApi();
 
         app.MapPost(
-                "/Publish/NotificationMessage",
+                "/CustomBus/Publish/NotificationMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     return bus.Publish(new NotificationMessage("My Test Message", "Test Title"));
@@ -40,7 +40,7 @@ public class MassTransitEndpoints : IEndpoint
             .WithOpenApi();
 
         app.MapPost(
-                "/PublishWithError/MyTestMessage",
+                "/CustomBus/PublishWithError/MyTestMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     return bus.Publish(new MyTestErrorMessage());
@@ -50,7 +50,7 @@ public class MassTransitEndpoints : IEndpoint
             .WithOpenApi();
 
         app.MapPost(
-                "/PublishBatch/MyTestBatchMessage",
+                "/CustomBus/PublishBatch/MyTestBatchMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     var lstMessages = new Array[100].Select(x => new MyTestBatchMessage());
@@ -62,7 +62,7 @@ public class MassTransitEndpoints : IEndpoint
             .WithOpenApi();
 
         app.MapPost(
-                "/PublishDelay/DelayMessage",
+                "/CustomBus/PublishDelay/DelayMessage",
                 ([FromServices] IMyBus bus) =>
                 {
                     var lstMessages = new Array[100].Select(x => new MyTestBatchMessage());
