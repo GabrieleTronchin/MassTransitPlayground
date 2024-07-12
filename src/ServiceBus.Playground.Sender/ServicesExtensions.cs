@@ -15,6 +15,8 @@ public static partial class ServicesExtensions
     {
         //Register observers
         services.AddTransient<IPublishObserver, PublishObserver>();
+        services.AddTransient<ISendObserver, SendObserver>();
+
         services.AddTransient<IMyBus, MyBus>();
         services
             .AddOptions<ServiceBusOptions>()
@@ -27,6 +29,7 @@ public static partial class ServicesExtensions
             ?? throw new ArgumentNullException(nameof(ServiceBusOptions));
 
         var publishObserver = serviceProvidder.GetRequiredService<IPublishObserver>();
+        var sendObserver = serviceProvidder.GetRequiredService<ISendObserver>();
 
         services.AddMassTransit(x =>
         {
@@ -35,10 +38,13 @@ public static partial class ServicesExtensions
             switch (buOptions.Type)
             {
                 case ServiceBusType.InMemory:
+                    x.AddDelayedMessageScheduler();
                     x.UsingInMemory(
                         (context, cfg) =>
                         {
                             cfg.ConfigureEndpoints(context);
+                            cfg.ConnectPublishObserver(publishObserver);
+                            cfg.ConnectSendObserver(sendObserver);
                         }
                     );
                     break;
@@ -52,6 +58,7 @@ public static partial class ServicesExtensions
                             cfg.Host(buOptions.ConnectionString);
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectPublishObserver(publishObserver);
+                            cfg.ConnectSendObserver(sendObserver);
                         }
                     );
 
@@ -65,6 +72,8 @@ public static partial class ServicesExtensions
                             cfg.Host(buOptions.ConnectionString);
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectPublishObserver(publishObserver);
+                            cfg.ConnectSendObserver(sendObserver);
+
                         }
                     );
 

@@ -45,7 +45,7 @@ public class MyBus(IPublishEndpoint publishEndpoint, IMessageScheduler messageSc
 
         var sendEndpoint = await bus.GetSendEndpoint(new Uri(destinationUrl));
 
-        await sendEndpoint.Send(message, cancellationToken);
+        await sendEndpoint.SendBatch(message, cancellationToken);
     }
 
     /// <summary>

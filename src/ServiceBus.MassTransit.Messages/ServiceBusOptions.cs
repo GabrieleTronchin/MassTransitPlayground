@@ -7,7 +7,6 @@ namespace MassTransit.Playground.Messages
         [Required]
         public required ServiceBusType Type { get; set; }
 
-        [Required]
         public required string ConnectionString { get; set; }
     }
 
