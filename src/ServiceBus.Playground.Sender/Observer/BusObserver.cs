@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MassTransit.Playground.Sender.Observer;
+﻿namespace MassTransit.Playground.Sender.Observer;
 
 internal class BusObserver : IBusObserver
 {

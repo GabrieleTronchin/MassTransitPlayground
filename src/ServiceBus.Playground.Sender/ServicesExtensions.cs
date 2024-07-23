@@ -16,6 +16,7 @@ public static partial class ServicesExtensions
         //Register observers
         services.AddTransient<IPublishObserver, PublishObserver>();
         services.AddTransient<ISendObserver, SendObserver>();
+        services.AddTransient<IBusObserver, BusObserver>();
 
         services.AddTransient<IMyBus, MyBus>();
         services
@@ -23,13 +24,15 @@ public static partial class ServicesExtensions
             .Bind(configuration.GetSection(nameof(ServiceBusOptions)))
             .ValidateDataAnnotations();
 
-        var serviceProvidder = services.BuildServiceProvider();
+        var serviceProvider = services.BuildServiceProvider();
+
         var buOptions =
-            serviceProvidder.GetRequiredService<IOptions<ServiceBusOptions>>()?.Value
+            serviceProvider.GetRequiredService<IOptions<ServiceBusOptions>>()?.Value
             ?? throw new ArgumentNullException(nameof(ServiceBusOptions));
 
-        var publishObserver = serviceProvidder.GetRequiredService<IPublishObserver>();
-        var sendObserver = serviceProvidder.GetRequiredService<ISendObserver>();
+        var publishObserver = serviceProvider.GetRequiredService<IPublishObserver>();
+        var sendObserver = serviceProvider.GetRequiredService<ISendObserver>();
+        var busObserver = serviceProvider.GetRequiredService<IBusObserver>();
 
         services.AddMassTransit(x =>
         {
@@ -45,6 +48,7 @@ public static partial class ServicesExtensions
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectPublishObserver(publishObserver);
                             cfg.ConnectSendObserver(sendObserver);
+                            cfg.ConnectBusObserver(busObserver);
                         }
                     );
                     break;
@@ -59,6 +63,7 @@ public static partial class ServicesExtensions
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectPublishObserver(publishObserver);
                             cfg.ConnectSendObserver(sendObserver);
+                            cfg.ConnectBusObserver(busObserver);
                         }
                     );
 
@@ -73,7 +78,7 @@ public static partial class ServicesExtensions
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectPublishObserver(publishObserver);
                             cfg.ConnectSendObserver(sendObserver);
-
+                            cfg.ConnectBusObserver(busObserver);
                         }
                     );
 

@@ -21,13 +21,15 @@ public static partial class ServicesExtensions
 
         //Register observers
         services.AddTransient<IConsumeObserver, GlobalConsumeObserver>();
+        services.AddTransient<IRetryObserver, RetryObserver>();
 
-        var serviceProvidder = services.BuildServiceProvider();
+        var serviceProvider = services.BuildServiceProvider();
         var buOptions =
-            serviceProvidder.GetRequiredService<IOptions<ServiceBusOptions>>()?.Value
+            serviceProvider.GetRequiredService<IOptions<ServiceBusOptions>>()?.Value
             ?? throw new ArgumentNullException(nameof(ServiceBusOptions));
 
-        var globalConsumerObserver = serviceProvidder.GetRequiredService<IConsumeObserver>();
+        var globalConsumerObserver = serviceProvider.GetRequiredService<IConsumeObserver>();
+        var retryObserver = serviceProvider.GetRequiredService<IRetryObserver>();
 
         services.AddMassTransit(x =>
         {
@@ -48,7 +50,12 @@ public static partial class ServicesExtensions
                                     TimeSpan.FromMinutes(30)
                                 )
                             );
-                            cfg.UseMessageRetry(r => r.Immediate(5));
+                            cfg.UseMessageRetry(r =>
+                            {
+                                r.Immediate(2);
+                                r.ConnectRetryObserver(retryObserver);
+                            });
+
                             cfg.ConfigureEndpoints(context);
                         }
                     );
@@ -67,7 +74,11 @@ public static partial class ServicesExtensions
                                     TimeSpan.FromSeconds(3)
                                 )
                             );
-                            cfg.UseMessageRetry(r => r.Immediate(2));
+                            cfg.UseMessageRetry(r =>
+                            {
+                                r.Immediate(2);
+                                r.ConnectRetryObserver(retryObserver);
+                            });
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectConsumeObserver(globalConsumerObserver);
                         }
@@ -88,7 +99,11 @@ public static partial class ServicesExtensions
                                     TimeSpan.FromSeconds(3)
                                 )
                             );
-                            cfg.UseMessageRetry(r => r.Immediate(2));
+                            cfg.UseMessageRetry(r =>
+                            {
+                                r.Immediate(2);
+                                r.ConnectRetryObserver(retryObserver);
+                            });
                             cfg.ConfigureEndpoints(context);
                         }
                     );
