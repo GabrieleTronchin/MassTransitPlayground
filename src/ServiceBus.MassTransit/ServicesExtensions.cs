@@ -22,6 +22,9 @@ public static partial class ServicesExtensions
         //Register observers
         services.AddTransient<IConsumeObserver, GlobalConsumeObserver>();
 
+        // Register the observer as a scoped dependency
+        services.AddScoped<IConsumeMessageObserver<MySampleRequestConsumer>, MySampleRequestConsumerObserver>();
+
         services.AddTransient<IRetryObserver, RetryObserver>();
 
         var serviceProvider = services.BuildServiceProvider();
@@ -31,6 +34,8 @@ public static partial class ServicesExtensions
 
         var globalConsumerObserver = serviceProvider.GetRequiredService<IConsumeObserver>();
         var retryObserver = serviceProvider.GetRequiredService<IRetryObserver>();
+        var messageObserver = serviceProvider.GetRequiredService<IConsumeMessageObserver<MySampleRequestConsumer>>();
+
 
         services.AddMassTransit(x =>
         {
@@ -58,6 +63,7 @@ public static partial class ServicesExtensions
                             });
 
                             cfg.ConfigureEndpoints(context);
+
                         }
                     );
                     break;
@@ -82,6 +88,7 @@ public static partial class ServicesExtensions
                             });
                             cfg.ConfigureEndpoints(context);
                             cfg.ConnectConsumeObserver(globalConsumerObserver);
+                            //cfg.ConnectConsumeMessageObserver(globalConsumerObserver);
                         }
                     );
 
@@ -107,6 +114,9 @@ public static partial class ServicesExtensions
                             });
                             cfg.ConfigureEndpoints(context);
                         }
+
+
+
                     );
 
                     break;
