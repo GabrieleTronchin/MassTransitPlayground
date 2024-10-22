@@ -21,6 +21,7 @@ public static partial class ServicesExtensions
 
         //Register observers
         services.AddTransient<IConsumeObserver, GlobalConsumeObserver>();
+
         services.AddTransient<IRetryObserver, RetryObserver>();
 
         var serviceProvider = services.BuildServiceProvider();
